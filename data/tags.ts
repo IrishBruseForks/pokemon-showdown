@@ -353,3 +353,5 @@ export const Tags: {[id: string]: TagData} = {
 		moveNumCol: move => move.pp,
 	},
 };
+// import fs from 'fs';
+// fs.writeFileSync(__filename.replace(".ts",".json"),JSON.stringify( Tags,null,4))

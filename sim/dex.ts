@@ -420,28 +420,27 @@ export class ModdedDex {
 	}
 
 	loadDataFile(basePath: string, dataType: DataType | 'Aliases'): AnyObject {
-		try {
-			const filePath = basePath + DATA_FILES[dataType];
-			const dataObject = require(filePath);
-			if (!dataObject || typeof dataObject !== 'object') {
-				throw new TypeError(`${filePath}, if it exists, must export a non-null object`);
-			}
-			if (dataObject[dataType]?.constructor?.name !== 'Object') {
-				throw new TypeError(`${filePath}, if it exists, must export an object whose '${dataType}' property is an Object`);
-			}
-			return dataObject[dataType];
-		} catch (e: any) {
-			if (e.code !== 'MODULE_NOT_FOUND' && e.code !== 'ENOENT') {
-				throw e;
-			}
-		}
-		return {};
+
+		const filePath = basePath + DATA_FILES[dataType]+".json";
+console.log(dataType);
+
+
+		let jsonData =fs.readFileSync(filePath).toString();
+
+		return JSON.parse(jsonData.toString())
+
+// return {}
 	}
 
 	loadTextFile(
 		name: string, exportName: string
 	): DexTable<MoveText | ItemText | AbilityText | PokedexText | DefaultText> {
-		return require(`${DATA_DIR}/text/${name}`)[exportName];
+		console.log(name,exportName);
+
+
+		let jsonData =fs.readFileSync(`./data/text/${name}.json`).toString();
+
+		return JSON.parse(jsonData.toString())
 	}
 
 	includeMods(): this {

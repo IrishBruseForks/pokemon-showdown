@@ -3,6 +3,7 @@
 const fs = require("fs");
 const child_process = require("child_process");
 const esbuild = require('esbuild');
+const path = require('path');
 
 const copyOverDataJSON = (file = 'data') => {
 	const files = fs.readdirSync(file);
@@ -10,7 +11,9 @@ const copyOverDataJSON = (file = 'data') => {
 		if (fs.statSync(`${file}/${f}`).isDirectory()) {
 			copyOverDataJSON(`${file}/${f}`);
 		} else if (f.endsWith('.json')) {
-			fs.copyFileSync(`${file}/${f}`, require('path').resolve('dist', `${file}/${f}`));
+			let test = path.resolve('dist', `${file}/${f}`);
+			fs.mkdirSync(path.dirname(test), { recursive: true });
+			fs.copyFileSync(`${file}/${f}`,path.resolve('dist', `${file}/${f}`));
 		}
 	}
 };
@@ -42,15 +45,21 @@ const findFilesForPath = path => {
 };
 
 exports.transpile = (decl) => {
-	esbuild.buildSync({
-		entryPoints: findFilesForPath('./'),
-		outdir: './dist',
-		outbase: '.',
-		format: 'cjs',
-		tsconfig: './tsconfig.json',
-		sourcemap: true,
+	esbuild.build({
+		entryPoints: ["./index.ts"],
+		outfile: "./dist/index.mjs",
+		platform: "node",
+		target: "deno1.40",
+		bundle: true,
+		define: {
+			"global":"globalThis"
+		},
+		plugins: [envPlugin],
+		minify: true,
+		format: "esm",
+		tsconfig: "./tsconfig.json",
 	});
-	fs.copyFileSync('./config/config-example.js', './dist/config/config-example.js');
+	// fs.copyFileSync('./config/config-example.js', './dist/config/config-example.js');
 	copyOverDataJSON();
 
 	// NOTE: replace is asynchronous - add additional replacements for the same path in one call instead of making multiple calls.
@@ -63,4 +72,38 @@ exports.buildDecls = () => {
 	try {
 		child_process.execSync(`node ./node_modules/typescript/bin/tsc -p sim`, {stdio: 'inherit'});
 	} catch {}
+};
+let envPlugin = {
+	name: "env",
+	setup(build) {
+		function addNodePrefix(args) {
+			return {
+				path: "node:" + args.path,
+				external: true,
+			};
+		}
+
+		// Intercept import paths called "env" so esbuild doesn't attempt
+		// to map them to a file system location. Tag them with the "env-ns"
+		// namespace to reserve them for this plugin.
+		build.onResolve({ filter: /^child_process$/ }, (args) =>
+			addNodePrefix(args)
+		);
+		build.onResolve({ filter: /^cluster$/ }, (args) => addNodePrefix(args));
+		build.onResolve({ filter: /^url$/ }, (args) => addNodePrefix(args));
+		build.onResolve({ filter: /^http$/ }, (args) => addNodePrefix(args));
+		build.onResolve({ filter: /^https$/ }, (args) => addNodePrefix(args));
+		build.onResolve({ filter: /^repl$/ }, (args) => addNodePrefix(args));
+		build.onResolve({ filter: /^net$/ }, (args) => addNodePrefix(args));
+		build.onResolve({ filter: /^path$/ }, (args) => addNodePrefix(args));
+		build.onResolve({ filter: /^fs$/ }, (args) => addNodePrefix(args));
+
+		build.onEnd((result) => {
+			let text = fs.readFileSync("./dist/index.mjs", "utf8");
+
+			text = text.replace(/__dirname/g, "import.meta.dirname");
+
+			fs.writeFileSync("./dist/index.mjs", text);
+		});
+	},
 };

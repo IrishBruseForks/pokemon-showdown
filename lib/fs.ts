@@ -41,7 +41,7 @@ interface PendingUpdate {
 declare const __fsState: {pendingUpdates: Map<string, PendingUpdate>};
 // config needs to be declared here since we access it as global.Config?.nofswriting
 // (so we can use it without the global)
-declare const global: {__fsState: typeof __fsState, Config: any};
+var global: { __fsState: typeof __fsState; Config: any } = {} as any;
 if (!global.__fsState) {
 	global.__fsState = {
 		pendingUpdates: new Map(),

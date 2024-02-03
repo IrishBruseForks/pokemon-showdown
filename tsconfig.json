@@ -21,6 +21,8 @@
     "types": ["node"],
     "exclude": [
         "./.*-dist/**/*",
+        "node_modules/**",
+        "**/*.map",
         "./server/chat-plugins/private/*/*.d.ts"
     ],
     "include": [

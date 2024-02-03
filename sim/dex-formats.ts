@@ -492,6 +492,7 @@ function mergeFormatLists(main: FormatList, custom: FormatList | undefined): For
 
 	return result;
 }
+import { Formats as defaultFormats } from '../config/formats';
 
 export class DexFormats {
 	readonly dex: ModdedDex;
@@ -511,22 +512,12 @@ export class DexFormats {
 		const formatsList = [];
 
 		// Load formats
-		let customFormats;
-		try {
-			customFormats = require(`${__dirname}/../config/custom-formats`).Formats;
-			if (!Array.isArray(customFormats)) {
-				throw new TypeError(`Exported property 'Formats' from "./config/custom-formats.ts" must be an array`);
-			}
-		} catch (e: any) {
-			if (e.code !== 'MODULE_NOT_FOUND' && e.code !== 'ENOENT') {
-				throw e;
-			}
-		}
-		let Formats: AnyObject[] = require(`${__dirname}/../config/formats`).Formats;
+
+		let Formats: AnyObject[] = defaultFormats;
 		if (!Array.isArray(Formats)) {
 			throw new TypeError(`Exported property 'Formats' from "./config/formats.ts" must be an array`);
 		}
-		if (customFormats) Formats = mergeFormatLists(Formats as any, customFormats);
+		//if (customFormats) Formats = mergeFormatLists(Formats as any, );
 
 		let section = '';
 		let column = 1;

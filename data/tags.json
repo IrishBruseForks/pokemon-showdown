@@ -1,0 +1,246 @@
+{
+    "physical": {
+        "name": "Physical",
+        "desc": "Move deals damage with the Attack and Defense stats."
+    },
+    "special": {
+        "name": "Special",
+        "desc": "Move deals damage with the Special Attack and Special Defense stats."
+    },
+    "status": {
+        "name": "Status",
+        "desc": "Move does not deal damage."
+    },
+    "mega": {
+        "name": "Mega"
+    },
+    "mythical": {
+        "name": "Mythical"
+    },
+    "sublegendary": {
+        "name": "Sub-Legendary"
+    },
+    "restrictedlegendary": {
+        "name": "Restricted Legendary"
+    },
+    "paradox": {
+        "name": "Paradox"
+    },
+    "zmove": {
+        "name": "Z-Move"
+    },
+    "maxmove": {
+        "name": "Max Move"
+    },
+    "contact": {
+        "name": "Contact",
+        "desc": "Affected by a variety of moves, abilities, and items. Moves affected by contact moves include: Spiky Shield, King's Shield. Abilities affected by contact moves include: Iron Barbs, Rough Skin, Gooey, Flame Body, Static, Tough Claws. Items affected by contact moves include: Rocky Helmet, Sticky Barb."
+    },
+    "sound": {
+        "name": "Sound",
+        "desc": "Doesn't affect Soundproof Pokémon. (All sound moves also bypass Substitute.)"
+    },
+    "powder": {
+        "name": "Powder",
+        "desc": "Doesn't affect Grass-type Pokémon, Overcoat Pokémon, or Safety Goggles holders."
+    },
+    "fist": {
+        "name": "Fist",
+        "desc": "Boosted 1.2x by Iron Fist."
+    },
+    "pulse": {
+        "name": "Pulse",
+        "desc": "Boosted 1.5x by Mega Launcher."
+    },
+    "bite": {
+        "name": "Bite",
+        "desc": "Boosted 1.5x by Strong Jaw."
+    },
+    "ballistic": {
+        "name": "Ballistic",
+        "desc": "Doesn't affect Bulletproof Pokémon."
+    },
+    "bypassprotect": {
+        "name": "Bypass Protect",
+        "desc": "Bypasses Protect, Detect, King's Shield, and Spiky Shield."
+    },
+    "nonreflectable": {
+        "name": "Nonreflectable",
+        "desc": "Can't be bounced by Magic Coat or Magic Bounce."
+    },
+    "nonmirror": {
+        "name": "Nonmirror",
+        "desc": "Can't be copied by Mirror Move."
+    },
+    "nonsnatchable": {
+        "name": "Nonsnatchable",
+        "desc": "Can't be copied by Snatch."
+    },
+    "bypasssubstitute": {
+        "name": "Bypass Substitute",
+        "desc": "Bypasses but does not break a Substitute."
+    },
+    "gmaxmove": {
+        "name": "G-Max Move"
+    },
+    "uber": {
+        "name": "Uber"
+    },
+    "ou": {
+        "name": "OU"
+    },
+    "uubl": {
+        "name": "UUBL"
+    },
+    "uu": {
+        "name": "UU"
+    },
+    "rubl": {
+        "name": "RUBL"
+    },
+    "ru": {
+        "name": "RU"
+    },
+    "nubl": {
+        "name": "NUBL"
+    },
+    "nu": {
+        "name": "NU"
+    },
+    "publ": {
+        "name": "PUBL"
+    },
+    "pu": {
+        "name": "PU"
+    },
+    "zubl": {
+        "name": "ZUBL"
+    },
+    "zu": {
+        "name": "ZU"
+    },
+    "nfe": {
+        "name": "NFE"
+    },
+    "lc": {
+        "name": "LC"
+    },
+    "captier": {
+        "name": "CAP Tier"
+    },
+    "caplc": {
+        "name": "CAP LC"
+    },
+    "capnfe": {
+        "name": "CAP NFE"
+    },
+    "ag": {
+        "name": "AG"
+    },
+    "duber": {
+        "name": "DUber"
+    },
+    "dou": {
+        "name": "DOU"
+    },
+    "dbl": {
+        "name": "DBL"
+    },
+    "duu": {
+        "name": "DUU"
+    },
+    "dnu": {
+        "name": "DNU"
+    },
+    "ndag": {
+        "name": "ND AG"
+    },
+    "nduber": {
+        "name": "ND Uber"
+    },
+    "ndou": {
+        "name": "ND OU"
+    },
+    "nduubl": {
+        "name": "ND UUBL"
+    },
+    "nduu": {
+        "name": "ND UU"
+    },
+    "ndrubl": {
+        "name": "ND RUBL"
+    },
+    "ndru": {
+        "name": "ND RU"
+    },
+    "past": {
+        "name": "Past"
+    },
+    "future": {
+        "name": "Future"
+    },
+    "lgpe": {
+        "name": "LGPE"
+    },
+    "unobtainable": {
+        "name": "Unobtainable"
+    },
+    "cap": {
+        "name": "CAP"
+    },
+    "custom": {
+        "name": "Custom"
+    },
+    "nonexistent": {
+        "name": "Nonexistent"
+    },
+    "introducedgen": {
+        "name": "Introduced Gen"
+    },
+    "height": {
+        "name": "Height"
+    },
+    "weight": {
+        "name": "Weight"
+    },
+    "hp": {
+        "name": "HP",
+        "desc": "Hit Points"
+    },
+    "atk": {
+        "name": "Atk",
+        "desc": "Attack"
+    },
+    "def": {
+        "name": "Def",
+        "desc": "Defense"
+    },
+    "spa": {
+        "name": "SpA",
+        "desc": "Special Attack"
+    },
+    "spd": {
+        "name": "SpD",
+        "desc": "Special Defense"
+    },
+    "spe": {
+        "name": "Spe",
+        "desc": "Speed"
+    },
+    "bst": {
+        "name": "BST",
+        "desc": "Base Stat Total"
+    },
+    "basepower": {
+        "name": "Base Power"
+    },
+    "priority": {
+        "name": "Priority"
+    },
+    "accuracy": {
+        "name": "Accuracy"
+    },
+    "maxpp": {
+        "name": "Max PP"
+    }
+}
